@@ -1,3 +1,4 @@
+from importlib.metadata import entry_points
 from setuptools import setup, find_packages
 
 with open('README.rst', encoding='UTF-8') as f:
@@ -11,7 +12,12 @@ setup(
     long_description=readme,
     author='Kaushal',
     author_email='kaushalsharma880@gmail.com',
-    instal_requires=[],
+    instal_requires=['boto3'],
     packages=find_packages('src'),
-    package_dir={'': 'src'}
+    package_dir={'': 'src'},
+    entry_points={
+        'console_scripts': [
+            'pgbackup=pgbackup.cli:main',
+        ]
+    }
 )
